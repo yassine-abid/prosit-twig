@@ -1,0 +1,28 @@
+{% if authors is empty %}
+    <p style="color: red; font-weight: bold; text-align: center; margin-top: 20px;">No authors found</p>
+{% else %}
+    <ul style="list-style-type: none; padding: 0;">
+        {% for author in authors %}
+            <li style="border: 1px solid #ccc; margin-bottom: 20px; padding: 20px; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div style="display: flex; align-items: center;">
+                    <div style="margin-right: 20px;">
+                        <img src="{{ asset(author.picture) }}" height="150px" width="150px" style="border-radius: 50%; object-fit: cover;"/>
+                    </div>
+                    <div>
+                        <h2 style="margin: 0; color: #333; text-transform: uppercase; font-size: 1.5em;">
+                            {{ loop.index }}. {{ author.username|upper }}
+                        </h2>
+                        <p style="margin: 5px 0; font-size: 1.1em; color: #555;">Email: {{ author.email }}</p>
+                        <p style="margin: 5px 0; font-size: 1.1em; color: #555;">Number of books: <strong>{{ author.nb_books }}</strong></p>
+
+                        {# Lien vers la page de détails de l'auteur #}
+                        <a href="{{ url('author_details', {'id':author.id}) }}" style="color: blue; text-decoration: underline;">Details</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p style="font-weight: bold; margin-top: 20px;">Total Authors: {{ authors|length }}</p>
+    <p style="font-weight: bold; margin-top: 10px;">Total books: {{ authors|reduce((total, author) => total + author.nb_books, 0) }}</p>
+{% endif %}
