@@ -1,0 +1,57 @@
+{# templates/student/addstudent.html.twig #}
+
+
+{% block body %}
+    <h1>Add a New Student</h1>
+
+    <div style="display: flex; justify-content: space-between;">
+        <!-- Form to add a new student -->
+        <div style="width: 45%;">
+            {{ form_start(form) }}
+                <div>
+                    <label for="cin">CIN:</label>
+                    {{ form_widget(form.cin) }}
+                </div>
+                <div>
+                    <label for="nom">Name:</label>
+                    {{ form_widget(form.nom) }}
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div>
+                <button type="submit">Add Student</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+        <!-- Table displaying the list of students -->
+        <div style="width: 45%;">
+            <h2>List of Students</h2>
+
+            <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; text-align: left;">
+                <thead>
+                    <tr>
+                        <th>CIN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.cin }}</td>
+                            <td>{{ student.nom }}</td>
+                            <td>{{ student.email }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">No students found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
