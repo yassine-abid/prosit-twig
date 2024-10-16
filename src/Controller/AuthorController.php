@@ -103,8 +103,7 @@ public function update (int $id, Request $request, AuthorRepository $authorRepos
 
             return $this->redirectToRoute('author_list');
         } 
-        return $this->render('author/create.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('author/create.html.twig', ['form' => $form->createView(),
         ]);
     }
 }

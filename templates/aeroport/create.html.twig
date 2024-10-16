@@ -1,0 +1,18 @@
+{# templates/aeroport/create.html.twig #}
+
+
+
+{% block body %}
+    <h1 style="text-align: center; margin-bottom: 20px;">Create Aeroport</h1>
+
+    <div style="width: 50%; margin: 0 auto; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Create</button>
+        {{ form_end(form) }}
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ path('aeroport_list') }}" class="btn btn-secondary" style="padding: 10px 20px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px;">Back to List</a>
+    </div>
+{% endblock %}

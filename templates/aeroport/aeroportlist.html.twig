@@ -1,0 +1,36 @@
+{# templates/aeroport/aeroportlist.html.twig #}
+
+
+
+{% block body %}
+    <h1 style="text-align: center; margin-bottom: 20px;">Liste des Aéroports</h1>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="{{ path('aeroport_create') }}" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Create New Aéroport</a>
+    </div>
+
+    {% if aeroport is empty %}
+        <p style="color: red; font-weight: bold; text-align: center; margin-top: 20px;">No aéroports found</p>
+    {% else %}
+        <table style="margin: 0 auto; width: 80%; text-align: center; border-collapse: collapse; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">Nom</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Ville</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aeroport in aeroport %}
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ aeroport.nom }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ aeroport.ville }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">
+                            <a href="{{ path('aeroport_update', {'id': aeroport.id}) }}" class="btn btn-secondary" style="padding: 5px 10px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px;">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
